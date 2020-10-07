@@ -1,5 +1,5 @@
 from collections import deque
-from InputOutput import output, input
+from InputOutput import output, inputNKA
 
 def Go(automate: list, state: str, symbol: str):
     SEPARATOR = "#"
@@ -44,3 +44,9 @@ def determine(alphabet: list, automate: list, final_states: set):
                 queue.append(cur_new_node)
     new_final_states = getNewFinalStates(new_automate, final_states)
     return new_automate, new_final_states
+
+if __name__ == '__main__':
+    alphabet, NKA, final_states = inputNKA()
+    DKA, determined_final_states = determine(alphabet, NKA, final_states)
+    print("ДКА:")
+    output(DKA, determined_final_states)

@@ -1,3 +1,6 @@
+from Determination import determine
+from InputOutput import inputNKA, output
+
 def makeComplete(automate, alphabet):
     size_of_automate = len(automate)
     new_state = str(size_of_automate)
@@ -14,3 +17,11 @@ def makeComplete(automate, alphabet):
     if not is_complete:
         automate[new_state] = [(new_state, symbol) for symbol in alphabet]
     return automate
+
+
+if __name__ == "__main__":
+
+    alphabet, NKA, final_states = inputNKA()
+    DKA, determined_final_states = determine(alphabet, NKA, final_states)
+    print("ПДКА:")
+    output(makeComplete(DKA, alphabet), determined_final_states)
