@@ -23,5 +23,6 @@ if __name__ == "__main__":
 
     alphabet, NKA, final_states = inputNKA()
     DKA, determined_final_states = determine(alphabet, NKA, final_states)
+    complite_automate = makeComplete(DKA, alphabet)
     print("ПДКА:")
-    output(makeComplete(DKA, alphabet), determined_final_states)
+    output(complite_automate, determined_final_states)

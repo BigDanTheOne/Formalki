@@ -1,5 +1,5 @@
 from Determination import determine
-from MakingComplite import makeComplete
+from Complition import makeComplete
 from InputOutput import inputNKA, output
 def minimize(automate, alphabet, final_states):
     classes = {}
@@ -39,5 +39,7 @@ def processState(automate, state, classes, symbol, added, new_number, new_classe
 if __name__ == "__main__":
     alphabet, NKA, final_states = inputNKA()
     DKA, determined_final_states = determine(alphabet, NKA, final_states)
+    complite_automate = makeComplete(DKA, alphabet)
+    classes = minimize(complite_automate, alphabet, determined_final_states)
     print("Классы эквивалентности:")
-    print(f"{minimize(makeComplete(DKA, alphabet), alphabet, determined_final_states)}")
+    print(classes)

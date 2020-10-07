@@ -1,28 +1,25 @@
 import unittest
 from Minimization import minimize
 
-start_machine = {"0": [("1", "a"), ("3", "b")],
-                 "1": [("2", "a"), ("4", "b")],
-                 "2": [("0", "a"), ("5", "b")],
-                 "3": [("4", "a"), ("6", "b")],
-                 "4": [("5", "a"), ("7", "b")],
-                 "5": [("3", "a"), ("8", "b")],
-                 "6": [("7", "a"), ("0", "b")],
-                 "7": [("8", "a"), ("1", "b")],
-                 "8": [("6", "a"), ("2", "b")]}
+PDKA = {'0': [('1', 'a'), ('2', 'b'), ('3', 'c')],
+        '1': [('2', 'b'), ('6', 'a'), ('6', 'c')],
+        '2': [('0#1', 'a'), ('6', 'b'), ('6', 'c')],
+        '3': [('1#2', 'b'), ('3', 'c'), ('6', 'a')],
+        '0#1': [('1', 'a'), ('2', 'b'), ('3', 'c')],
+        '1#2': [('0#1', 'a'), ('2', 'b'), ('6', 'c')],
+        '6': [('6', 'a'), ('6', 'b'), ('6', 'c')]}
 
-final_states = {"0", "4", "8"}
+final_states = {'0#1', '1#2', '2', '1'}
 
-alphabet = ["a", "b"]
+alphabet = ["a", "b", "c"]
 
-classes = {'0': 0, '1': 1, '3': 2, '2': 2, '4': 0, '6': 1, '5': 1, '7': 2, '8': 0}
+classes = {'0': 0, '1': 1, '2': 2, '3': 3, '0#1': 4, '1#2': 5, '6': 6}
 
 
 class MyTest(unittest.TestCase):
-
     def doTest(self):
-        self.assertEqual(minimize(start_machine, alphabet, final_states), classes)
+        self.assertEqual(minimize(PDKA, alphabet, final_states), classes)
 
 
-if __name__ == '__main__':
-    unittest.main()
+#if __name__ == '__main__':
+unittest.main()
